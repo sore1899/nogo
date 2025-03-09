@@ -4,7 +4,13 @@ const path = require('path');
 function duplicateFile() {
     const sourcePath = path.join(__dirname, 'duplicate');
     const randomNumber = Math.floor(10000 + Math.random() * 90000);
-    const destinationPath = path.join(__dirname, 'story', `${randomNumber}`);
+    const storyFolder = path.join(__dirname, 'story');
+    const destinationPath = path.join(storyFolder, `${randomNumber}`);
+
+    // Ensure the 'story' folder exists
+    if (!fs.existsSync(storyFolder)) {
+        fs.mkdirSync(storyFolder, { recursive: true });
+    }
 
     fs.copyFile(sourcePath, destinationPath, (err) => {
         if (err) {
@@ -12,9 +18,6 @@ function duplicateFile() {
             return;
         }
         console.log(`File duplicated to ${destinationPath}`);
-
-        const url = `https://shit.it.com/stupid/draw/${randomNumber}`;
-        require('open')(url);
     });
 }
 
