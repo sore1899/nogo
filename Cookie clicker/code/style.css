@@ -1,0 +1,79 @@
+.cookie
+{
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.1s;
+    width: 70%;
+    margin-top: 20px;
+}
+
+.pop
+{
+    transform: scale(1.2);
+}
+
+@font-face
+{
+    font-family: 'MyFont';
+    src: url('../fonts/Bungee-Regular.ttf');
+}
+
+.page
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 400px;
+}
+ 
+.top
+{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    font-family: 'MyFont';
+    font-size: 50px;
+    color: black;
+    margin-top: 50px;
+}
+
+.upgrades
+{
+    font-family: 'MyFont';
+    justify-items: center;
+    margin-bottom: 15px;
+}
+ 
+.game
+{
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    place-items: center;
+}
+
+body
+{
+    margin: 0;
+
+    background-image: url("../sprites/backround.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.cookie-particle
+{
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    will-change: transform, opacity, left, top;
+}
+
+img {
+  user-select: none;   /* Prevent text selection */
+  -webkit-user-drag: none; /* Prevent image drag in Chrome/Safari */
+  -moz-user-drag: none;    /* Firefox */
+  -o-user-drag: none;      /* Opera */
+}
