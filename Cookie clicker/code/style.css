@@ -1,0 +1,129 @@
+.cookie
+{
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.1s;
+    width: 70%;
+    vertical-align: top;
+    margin-bottom: 20%;
+}
+
+.pop
+{
+    transform: scale(1.2);
+}
+
+@font-face
+{
+    font-family: 'MyFont';
+    src: url('../fonts/Bungee-Regular.ttf');
+}
+
+.page
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 400px;
+    height: 100%;
+}
+ 
+.top
+{
+    text-align: center;
+    font-family: 'MyFont';
+    font-size: 50px;
+    color: black;
+    margin-top: 10%;
+}
+
+.store
+{
+    font-family: 'MyFont';
+    place-items: center;
+    margin-bottom: 15px;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+ 
+.game
+{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    place-items: center;
+    border-right: 25px solid transparent;
+    border-image: url("../sprites/border.png") 30 repeat;
+    vertical-align: top;
+}
+
+.store-images
+{
+    border-right: 25px solid transparent;
+    border-image: url("../sprites/border.png") 30 repeat;
+}
+
+body
+{
+    margin: 0;
+
+    background-image: url("../sprites/backround.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.cookie-particle
+{
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    will-change: transform, opacity, left, top;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+.reset-button
+{
+    font-family: 'MyFont';
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    justify-self: left;
+    margin: 20px;
+}
+
+.store-text
+{
+    border-bottom: 25px solid transparent;
+    border-image: url("../sprites/borderBottom.png") 30 repeat;
+    padding-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.store-text h2
+{
+    margin-bottom: 0;
+}
+
+.upgrades, .buildings
+{
+    text-align: center;
+    font-family: "MyFont";
+}
