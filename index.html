@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="Home/homeStyle.css">
+    </head>
+    <body>
+        <div class="page">
+                <div class="top">
+                    <div class="top-left">
+                        <h1><a href="../index.html">Home</a></h1>
+                        <nav class="nav">
+                            <a class="nav-item" href="Home/games.html">Games</a>
+                            <a class="nav-item" href="youtube.html">YouTube</a>
+                            <a class="nav-item" href="Home/about me.html">About Me</a>
+                        </nav>
+                    </div>
+                    <input id="search" class="search" type="search" placeholder="Search projects..." aria-label="Search projects">
+                </div>
+            <div class="projects">
+                    
+            </div> 
+        </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const input = document.getElementById('search');
+                    const projects = document.querySelectorAll('.projects .project');
+                    function filter()
+                    {
+                        const q = input.value.trim().toLowerCase();
+
+                        projects.forEach(p =>
+                        {
+                            const title = (p.querySelector('h2')?.textContent || '').toLowerCase();
+                            const creatorText = (p.querySelector('p')?.textContent || '').toLowerCase();
+                            const creator = creatorText.replace("made by:", "").trim();
+
+                            p.style.display =
+                                q === '' || title.includes(q) || creator.includes(q)
+                                ? ''
+                                : 'none';
+                        });
+                    }
+                    input.addEventListener('input', filter);
+                });
+            </script>
+    </body>
+</html>
