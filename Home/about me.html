@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="abouthtml.css">
+    </head>
+    <body>
+        <div class="page">
+                <div class="top">
+                    <div class="top-left">
+                        <h1><a href="../index.html">Home</a></h1>
+                        <nav class="nav">
+                            <a class="nav-item" href="games.html">Games</a>
+                            <a class="nav-item" href="youtube.html">YouTube</a>
+                            <a class="nav-item active" href="about.html">About Me</a>
+                        </nav>
+                    </div>
+                    <input id="search" class="search" type="search" placeholder="Search projects..." aria-label="Search projects">
+                </div>
+                <!-- Sub-navigation: Me / About Me / Favorites -->
+                <div class="subnav">
+                    <button class="subnav-btn active" data-target="me-section">Me</button>
+                    <button class="subnav-btn" data-target="about-section">About Me</button>
+                    <button class="subnav-btn" data-target="favorites-section">Favorites</button>
+                </div>
+            <div class="projects">
+                <!-- Content sections: only one is visible at a time -->
+                <div id="me-section" class="section">
+                    <h1>my name is soren</h1>
+                    <p>John 3:16</p>
+                    <img class="aboutme-IMG" src="about me.png" alt="Soren">
+                </div>
+
+                <div id="about-section" class="section" style="display:none;">
+                    <h2>Current Grade & Plans</h2>
+                    <p>I am in 10th grade, i am potentialy not going to collage.</p>
+                    <img src="https://via.placeholder.com/200x120?text=Grade" alt="Grade image">
+
+                    <h2>Hobbies</h2>
+                    <p>I enjoy coding, and playing games.</p>
+                    <img src="https://via.placeholder.com/200x120?text=Hobbies" alt="Hobbies image">
+
+                    <h2>Random Fact</h2>
+                    <p>I really like Mountain Dew and Renone Montanez.</p>
+                    <img src="https://via.placeholder.com/200x120?text=Random+Fact" alt="Random fact image">
+
+                    <h2>Dream Vacation</h2>
+                    <p>I would vacation in a renone mantanez fan club.</p>
+                    <img src="https://via.placeholder.com/200x120?text=Vacation" alt="Vacation image">
+                </div>
+
+                <div id="favorites-section" class="section" style="display:none;">
+                    <div style="display: inline-block;">
+                        <h2>Food</h2>
+                    <p>Mountain Dew</p>
+                    <img src="mountaindew.png" alt="Mountain Dew" onerror="this.src='https://via.placeholder.com/150'">
+                    </div>
+                    
+                    <div style="display: inline-block;">
+                        <h2>Music</h2>
+                    <p>Renone Montanez</p>
+                    <img src="renone.png" alt="Renone" onerror="this.src='https://via.placeholder.com/150'">
+                    </div>
+                    
+
+                    <div style="display: inline-block;">
+                        <h2>Movie / Show / YouTube</h2>
+                    <p>Renone Montanez (YouTube)</p>
+                    <img src="https://via.placeholder.com/150" alt="Favorite channel">
+                    </div>
+                    
+                </div>
+            </div> 
+            <script>
+                function showSection(id) {
+                    document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+                    document.getElementById(id).style.display = '';
+                    document.querySelectorAll('.subnav-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelector('.subnav-btn[data-target="'+id+'"]').classList.add('active');
+                }
+                document.querySelectorAll('.subnav-btn').forEach(btn => {
+                    btn.addEventListener('click', () => showSection(btn.getAttribute('data-target')));
+                });
+            </script>
+        </div>
+    </body>
+</html>
