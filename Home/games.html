@@ -23,7 +23,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../Cookie clicker/code/index.html"><img class="project-IMG" src="Cookie Toucher.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
                         </div>
 
                         <div class="creator-info">
@@ -38,7 +38,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../DS7.html"><img class="project-IMG" src="DS7.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
                         </div>
 
                         <div class="creator-info">
@@ -53,7 +53,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../PHONE%20(73).html"><img class="project-IMG" src="Defendor.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
                         </div>
 
                         <div class="creator-info">
@@ -68,7 +68,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../guntest.html"><img class="project-IMG" src="Gun test.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
                         </div>
 
                         <div class="creator-info">
@@ -83,7 +83,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../respawned.html"><img class="project-IMG" src="Respawned.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
                         </div>
 
                         <div class="creator-info">
@@ -98,7 +98,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../SHIFTERSV2.html"><img class="project-IMG" src="SHIFTERS V2.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
                         </div>
 
                         <div class="creator-info">
@@ -113,7 +113,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../game.html"><img class="project-IMG" src="GAME.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
                         </div>
 
                         <div class="creator-info">
@@ -128,7 +128,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../DG2.html"><img class="project-IMG" src="DG2.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
                         </div>
 
                         <div class="creator-info">
@@ -143,7 +143,7 @@
                     <div class="project">
                         <div class="imgfav">
                             <a href="../Brawlio.html"><img class="project-IMG" src="brawlio.png"></a>
-                            <button class="favorite">♡</button>
+                            <button class="favorite">🖤</button>
 
                         </div>
 
@@ -156,90 +156,30 @@
                         </div>
                     </div>
                 </div>
+                <div class="footer">
+                    <div></div>
+
+                    <div>
+                        <p>About</p>
+                        <p>Idk</p>
+                    </div>
+
+                    <div>
+                        <p>Contact</p>
+                        <p>
+                            Email: <a href="mailto:soren1899@outlook.com">soren1899@outlook.com</a>
+                            
+                        </p>
+                    </div>
+
+                    <div>
+                        <p>Resources</p>
+                    </div>
+                    
+                    <div></div>
+                </div>
             </div>
         </div>
-        <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const input = document.getElementById('search');
-                    const projects = document.querySelectorAll('.projects .project');
-                    const projectsContainer = document.querySelector('.projects');
-                    function filter()
-                    {
-                        const q = input.value.trim().toLowerCase();
-
-                        projects.forEach(p =>
-                        {
-                            const title = (p.querySelector('h2')?.textContent || '').toLowerCase();
-                            const creatorText = (p.querySelector('p')?.textContent || '').toLowerCase();
-                            const creator = creatorText.replace("made by:", "").trim();
-
-                            p.style.display =
-                                q === '' || title.includes(q) || creator.includes(q)
-                                ? ''
-                                : 'none';
-                        });
-                    }
-                    input.addEventListener('input', filter);
-
-                    const projectsArray = Array.from(projects);
-                    function projectId(p) {
-                        return (p.querySelector('h2')?.textContent || '').trim();
-                    }
-                    const favKey = 'gameFavorites';
-                    let favorites = [];
-                    try {
-                        const raw = localStorage.getItem(favKey);
-                        favorites = raw ? JSON.parse(raw) : [];
-                    } catch (e) {
-                        favorites = [];
-                    }
-
-                    favorites.slice().reverse().forEach(id => {
-                        const p = projectsArray.find(pp => projectId(pp) === id);
-                        if (p) {
-                            p.classList.add('favorited');
-                            const btn = p.querySelector('.favorite');
-                            if (btn) btn.textContent = '♥';
-                            projectsContainer.prepend(p);
-                        }
-                    });
-
-                    const favButtons = document.querySelectorAll('.favorite');
-                    favButtons.forEach(btn => {
-                        btn.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            const project = btn.closest('.project');
-                            const id = projectId(project);
-                            const isFav = project.classList.toggle('favorited');
-                            btn.textContent = isFav ? '♥' : '♡';
-
-                            // update favorites array
-                            favorites = favorites.filter(x => x !== id);
-                            if (isFav)
-                            {
-                                favorites.unshift(id);
-                                projectsContainer.prepend(project);
-                            } else
-                            {
-                                const origIndex = projectsArray.indexOf(project);
-                                let placed = false;
-                                for (let i = origIndex + 1; i < projectsArray.length; i++) {
-                                    const sibling = projectsArray[i];
-                                    if (!sibling.classList.contains('favorited') && sibling.parentElement === projectsContainer) {
-                                        projectsContainer.insertBefore(project, sibling);
-                                        placed = true;
-                                        break;
-                                    }
-                                }
-                                if (!placed) projectsContainer.appendChild(project);
-                            }
-
-                            try { localStorage.setItem(favKey, JSON.stringify(favorites)); } catch (e) {}
-                        });
-                    });
-
-                    filter();
-                });
-            </script>
+        <script src="games.js"></script>
     </body>
 </html>
