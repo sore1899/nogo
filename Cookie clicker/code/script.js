@@ -35,6 +35,8 @@ function resetGame(resetSave)
         game.buyClicksPerClickCost = 300
         game.fractionalCookies = 0
         game.cpcMultiplier = 1
+        game.buyGrandmaCost = 500
+        game.buyCpcMultiplyerCost = 400
         if(resetSave && confirm("Are you sure you want to reset your progress?"))
         {
             localStorage.setItem('cookies', game.cookies);
@@ -179,7 +181,7 @@ function spawnCookieParticleFall(x, y)
     function frame() {
         y += vy
 
-        p.style.left = x
+        p.style.left = x + 'px'
         p.style.top = y + 'px'
         p.style.opacity = Math.max(0, (life) / 150)
         p.style.transform = `translate(-50%, -50%)`

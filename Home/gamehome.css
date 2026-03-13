@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300..700&family=Oi&display=swap');
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
-.page
-{
+.page {
     display: grid;
     grid-template-rows: auto 1fr;
     font-family: "Fredoka", sans-serif;
@@ -14,16 +14,14 @@ html, body {
     height: 100vh;
 }
 
-h1
-{
+h1 {
     margin: 0;
     cursor: pointer;
     margin: 4px;
     margin-left: 9px;
 }
 
-.top
-{
+.top {
     background-color: lightsteelblue;
     border-bottom: 5px solid black;
     display: flex;
@@ -61,7 +59,7 @@ h1
 .nav-item.active {
     background: #9fb8d9;
     color: #000;
-    box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
 }
 
 .search {
@@ -74,14 +72,12 @@ h1
     width: 40%;
 }
 
-body
-{
+body {
     margin: 0;
-    background-color:rgb(229, 242, 242);
+    background-color: rgb(229, 242, 242);
 }
 
-.project-IMG
-{
+.project-IMG {
     width: 90%;
     height: auto;
     border: 5px solid black;
@@ -90,21 +86,23 @@ body
     transition: all 0.15s ease;
 }
 
-.project-IMG:hover
-{
+.project-IMG:hover {
     border-radius: 10px;
 }
 
-.projects
-{
+.project:hover .project-IMG {
+    /* ensure the image gets the same hover rounding when any part of the project (including the favorite button) is hovered */
+    border-radius: 10px;
+}
+
+.projects {
     margin: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.projectsscroll
-{
+.projectsscroll {
     display: grid;
     grid-template-rows: auto 1fr;
     overflow-y: auto;
@@ -112,8 +110,7 @@ body
     min-height: 0;
 }
 
-.project
-{
+.project {
     display: flex;
     flex-direction: column;
     border: transparent 3px solid;
@@ -121,33 +118,33 @@ body
     border-radius: 10px;
     border-color: #d7dee3;
     border-width: 3px;
+    transition: all 0.15s ease;
 }
 
-.project:hover
-{
+.project:hover {
     background-color: lightsteelblue;
     border-radius: 10px;
     border: 3px darkblue solid;
     transition: all 0.15s ease;
 }
 
-p, h2, .project-IMG
-{
+p,
+h2,
+.project-IMG {
     margin: 3.5%;
 }
 
-.project-IMG, h2
-{
+.project-IMG,
+h2 {
     margin-bottom: 0;
 }
 
-p, h2
-{
+p,
+h2 {
     margin-top: 0;
 }
 
-.aboutme-IMG
-{
+.aboutme-IMG {
     width: 200px;
     height: auto;
     border: 5px solid black;
@@ -155,8 +152,7 @@ p, h2
     display: block;
 }
 
-.creator-img
-{
+.creator-img {
     width: 50px;
     height: auto;
     border: 3px solid black;
@@ -166,27 +162,24 @@ p, h2
     margin-top: 5px;
 }
 
-.creator-info
-{
+.creator-info {
     display: grid;
     grid-template-columns: auto 1fr;
     margin-bottom: 12px;
 }
 
-h1 , a
-{
+h1,
+a {
     color: inherit;
     text-decoration: none;
 }
 
-.imgfav
-{
+.imgfav {
     position: relative;
     display: inline-block;
 }
 
-.favorite
-{
+.favorite {
     position: absolute;
     bottom: 8px;
     right: 22px;
@@ -203,20 +196,19 @@ h1 , a
 
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    cursor: pointer;
 }
 
-.project:not(.favorited):has(.project-IMG:hover) .favorite
-{
+.project:not(.favorited):has(.project-IMG:hover) .favorite {
     background-color: lightsteelblue;
     border: 3px darkblue solid;
-    color:#333;
+    color: #333;
     filter: brightness(2.5) saturate(0);
     transition: all 0.15s ease;
 }
 
-.project.favorited:has(.project-IMG:hover) .favorite
-{
+.project.favorited:has(.project-IMG:hover) .favorite {
     opacity: 0.5;
     background-color: transparent;
     border-color: transparent;
@@ -224,18 +216,16 @@ h1 , a
     transition: all 0.15s ease;
 }
 
-.favorite:hover, .project.favorited:hover
-{
+.favorite:hover,
+.project.favorited:hover {
     background-color: lightsteelblue;
     border: 3px darkblue solid;
-    color:#333;
+    color: #333;
     opacity: 1;
     transition: all 0.15s ease;
-    cursor: pointer;
 }
 
-.favorite:hover
-{
+.favorite:hover {
     filter: brightness(2.5) saturate(0);
 }
 
@@ -243,8 +233,7 @@ h1 , a
     filter: none !important;
 }
 
-.project.favorited .favorite:hover
-{
+.project.favorited .favorite:hover {
     background-color: rgba(224, 101, 146, 0.7);
     border: 3px solid #761b47;
     color: red;
@@ -253,8 +242,7 @@ h1 , a
 }
 
 .project.favorited .favorite,
-.favorite.filled
-{
+.favorite.filled {
     color: red !important;
     opacity: 1 !important;
     background-color: transparent;
@@ -263,28 +251,35 @@ h1 , a
 
 /* enable smooth FLIP-style rearrange animations */
 .projects .project {
-    transition: transform 300ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease;
+    transition: transform 300ms cubic-bezier(.2, .8, .2, 1), opacity 200ms ease;
     will-change: transform;
 }
 
 /* small pop animation for favorited projects to emphasize the move */
 .project.favorited {
-    animation: fav-pop 360ms cubic-bezier(.2,.8,.2,1);
+    animation: fav-pop 360ms cubic-bezier(.2, .8, .2, 1);
 }
 
 @keyframes fav-pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* temporary pop used for both favoriting and search highlighting */
 .project.pop {
-    animation: fav-pop 360ms cubic-bezier(.2,.8,.2,1);
+    animation: fav-pop 360ms cubic-bezier(.2, .8, .2, 1);
 }
 
-.footer
-{
+.footer {
     background-color: rgb(205, 216, 216);
     padding-top: 20px;
     padding-bottom: 40px;
@@ -293,7 +288,6 @@ h1 , a
     height: auto;
 }
 
-p
-{
-    color:#4e4e4e !important;
+p {
+    color: #4e4e4e !important;
 }

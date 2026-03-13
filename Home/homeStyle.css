@@ -1,36 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Fredoka:wght@300..700&family=Oi&display=swap');
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
-.page
-{
+.page {
     display: grid;
     grid-template-rows: auto 1fr;
     font-family: "Fredoka", sans-serif;
     font-weight: 400;
     font-style: normal;
     height: 100vh;
-    overflow-y: auto;
 }
 
-h1
-{
+h1 {
     margin: 0;
     cursor: pointer;
     margin: 4px;
     margin-left: 9px;
 }
 
-.top
+.Creators-creator-img
 {
+    border-radius: 100%;
+    display: block;
+    width: 75%;
+}
+
+.Creator
+{
+    place-items: center;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.top {
     background-color: lightsteelblue;
     border-bottom: 5px solid black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 6px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .top-left {
@@ -59,7 +73,7 @@ h1
 .nav-item.active {
     background: #9fb8d9;
     color: #000;
-    box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
 }
 
 .search {
@@ -72,58 +86,79 @@ h1
     width: 40%;
 }
 
-body
-{
+body {
     margin: 0;
+    background-color: rgb(229, 242, 242);
 }
 
-.project-IMG
-{
+.project-IMG {
     width: 90%;
     height: auto;
     border: 5px solid black;
     border-radius: 15px;
     display: block;
+    transition: all 0.15s ease;
 }
 
-.projects
-{
+.project-IMG:hover {
+    border-radius: 10px;
+}
+
+.project:hover .project-IMG {
+    /* ensure the image gets the same hover rounding when any part of the project (including the favorite button) is hovered */
+    border-radius: 10px;
+}
+
+.projects {
     margin: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
-.project
-{
-    display: flex;
-    flex-direction: column;
+.projectsscroll {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow-y: auto;
+    /* allow the grid area to shrink so internal scrolling works */
+    min-height: 0;
 }
 
-.project:hover
-{
+.project {
+    display: flex;
+    flex-direction: column;
+    border: transparent 3px solid;
+    background-color: #fff;
+    border-radius: 10px;
+    border-color: #d7dee3;
+    border-width: 3px;
+    transition: all 0.15s ease;
+}
+
+.project:hover {
     background-color: lightsteelblue;
     border-radius: 10px;
     border: 3px darkblue solid;
+    transition: all 0.15s ease;
 }
 
-p, h2, .project-IMG
-{
+p,
+h2,
+.project-IMG {
     margin: 3.5%;
 }
 
-.project-IMG, h2
-{
+.project-IMG,
+h2 {
     margin-bottom: 0;
 }
 
-p, h2
-{
+p,
+h2 {
     margin-top: 0;
 }
 
-.aboutme-IMG
-{
+.aboutme-IMG {
     width: 200px;
     height: auto;
     border: 5px solid black;
@@ -131,8 +166,143 @@ p, h2
     display: block;
 }
 
-h1 , a
-{
+.creator-img {
+    width: 50px;
+    height: auto;
+    border: 3px solid black;
+    border-radius: 50px;
+    display: block;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.creator-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin-bottom: 12px;
+}
+
+h1,
+a {
     color: inherit;
     text-decoration: none;
+}
+
+.imgfav {
+    position: relative;
+    display: inline-block;
+}
+
+.favorite {
+    position: absolute;
+    bottom: 8px;
+    right: 22px;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    border: 3px solid transparent;
+    background-color: transparent;
+    color: transparent;
+    border-radius: 5px;
+    opacity: 0.35;
+    text-align: center;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.project:not(.favorited):has(.project-IMG:hover) .favorite {
+    background-color: lightsteelblue;
+    border: 3px darkblue solid;
+    color: #333;
+    filter: brightness(2.5) saturate(0);
+    transition: all 0.15s ease;
+}
+
+.project.favorited:has(.project-IMG:hover) .favorite {
+    opacity: 0.5;
+    background-color: transparent;
+    border-color: transparent;
+    color: red;
+    transition: all 0.15s ease;
+}
+
+.favorite:hover,
+.project.favorited:hover {
+    background-color: lightsteelblue;
+    border: 3px darkblue solid;
+    color: #333;
+    opacity: 1;
+    transition: all 0.15s ease;
+}
+
+.favorite:hover {
+    filter: brightness(2.5) saturate(0);
+}
+
+.project.favorited .favorite:hover {
+    filter: none !important;
+}
+
+.project.favorited .favorite:hover {
+    background-color: rgba(224, 101, 146, 0.7);
+    border: 3px solid #761b47;
+    color: red;
+    opacity: 0.7;
+    transition: all 0.15s ease;
+}
+
+.project.favorited .favorite,
+.favorite.filled {
+    color: red !important;
+    opacity: 1 !important;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/* enable smooth FLIP-style rearrange animations */
+.projects .project {
+    transition: transform 300ms cubic-bezier(.2, .8, .2, 1), opacity 200ms ease;
+    will-change: transform;
+}
+
+/* small pop animation for favorited projects to emphasize the move */
+.project.favorited {
+    animation: fav-pop 360ms cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes fav-pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* temporary pop used for both favoriting and search highlighting */
+.project.pop {
+    animation: fav-pop 360ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.footer {
+    background-color: rgb(205, 216, 216);
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    height: auto;
+    margin-top: 30px;
+}
+
+p {
+    color: #4e4e4e !important;
 }
