@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Redirecting…</title></head>
+<body>
+<script>
+  // GitHub Pages serves this file whenever a path doesn't match a real file
+  // (e.g. yourdomain.com/42). Pull the last URL segment out and forward it
+  // to the real game page as a query string instead.
+  var path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  var num = path.split('/').pop() || '';
+  var target = window.location.origin + '/index.html?n=' + encodeURIComponent(num);
+  window.location.replace(target);
+</script>
+</body>
+</html>
