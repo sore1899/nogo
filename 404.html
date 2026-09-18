@@ -8,7 +8,7 @@
   // to the real game page as a query string instead.
   var path = window.location.pathname.replace(/^\/+|\/+$/g, '');
   var num = path.split('/').pop() || '';
-  var target = window.location.origin + '/index.html?n=' + encodeURIComponent(num);
+  var target = window.location.origin + '/freehand.html?n=' + encodeURIComponent(num);
   window.location.replace(target);
 </script>
 </body>
